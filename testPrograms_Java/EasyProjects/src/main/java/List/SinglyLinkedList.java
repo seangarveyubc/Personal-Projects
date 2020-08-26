@@ -1,10 +1,10 @@
-package java.List;
+package List;
 
-import Node.DoublyLinkedNode;
+import Node.SinglyLinkedNode;
 import Exceptions.UnisolatedNodeException;
 
 /**
- * Implementation of a Doubly Linked List that contains both head and tail references
+ * Implementation of a Singly Linked List that contains both head and tail references
  * @param <E>
  *     Generic to handle different types of linked lists
  */
@@ -12,44 +12,44 @@ import Exceptions.UnisolatedNodeException;
 /**
  * Functions contained in this file
  *      Constructor ()
- *      Constructor (DoublyLinkedNode<E> node)
- *      add (DoublyLinkedNode<E> node)
- *      addFront (DoublyLinkedNode<E> node)
- *      addBack (DoublyLinkedNode<E> node)
+ *      Constructor (SinglyLinkedNode<E> node)
+ *      add (SinglyLinkedNode<E> node)
+ *      addFront (SinglyLinkedNode<E> node)
+ *      addBack (SinglyLinkedNode<E> node)
  *      remove ()
- *      remove(DoublyLinkedNode<E> node)
+ *      remove(SinglyLinkedNode<E> node)
  *      removeFront ()
  *      removeBack ()
  *      clear()
  *      cloneShallow()
- *      contains(DoublyLinkedNode<E> node)
- *      isSame(DoublyLinkedNode<E> list)
+ *      contains(SinglyLinkedNode<E> node)
+ *      isSame(SinglyLinkedList<E> list)
  *      isEmpty()
  *      length()
  *      toString()
  */
 
-public class DoublyLinkedList<E> {
+public class SinglyLinkedList<E> {
 
     /**
      * Rep Invariant
-     *  This list contains a linked list of DoublyLinkedNode objects
+     *  This list contains a linked list of SinglyLinkedNode objects
      *  The head refers to the beginning of the list
-     *  The head is only "pointed to" by the next DoublyLinkedNode in the list
+     *  The head is not "pointed to" by any other SinglyLinkedNode
      *  The tail refers to the end of the list
-     *  The tail is only "pointed to" by the previous DoublyLinkedNode in the list
-     *  The length is the number of DoublyLinkedNode objects in the DoublyLinkedList object
+     *  The tail does not "point" to any other SinglyLinkedNode
+     *  The length is the number of SinglyLinkedNode objects in the SinglyLinkedList object
      */
 
-    private DoublyLinkedNode<E> head;
-    private DoublyLinkedNode<E> tail;
+    private SinglyLinkedNode<E> head;
+    private SinglyLinkedNode<E> tail;
     private int length;
 
     /**
      * Constructor
-     * Initializes a DoublyLinkedList object without a starting node
+     * Initializes a SinglyLinkedList object without a starting node
      */
-    public DoublyLinkedList () {
+    public SinglyLinkedList () {
         this.head = null;
         this.tail = null;
         this.length = 0;
@@ -60,7 +60,7 @@ public class DoublyLinkedList<E> {
      * @param node
      * Initializes a SinglyLinkedList object with a starting node
      */
-    public DoublyLinkedList (DoublyLinkedNode<E> node) {
+    public SinglyLinkedList (SinglyLinkedNode<E> node) {
         this.head = node;
         this.tail = node;
         this.length = 1;
@@ -71,8 +71,12 @@ public class DoublyLinkedList<E> {
      * @param node - node to be added
      * Adds node to the front of the list
      */
-    public void add (DoublyLinkedNode<E> node) {
-        addBack(node);
+    public void add (SinglyLinkedNode<E> node) {
+        try {
+            addBack(node);
+        } catch (UnisolatedNodeException error) {
+            System.out.println("Could not add the following SinglyLinkedNode: " + node.toString());
+        }
     }
 
     /**
@@ -80,10 +84,8 @@ public class DoublyLinkedList<E> {
      * @param node - node to be added
      * Adds node to the front of the list
      */
-    public void addFront (DoublyLinkedNode<E> node) {
-        this.head.setPrevious(node);
+    public void addFront (SinglyLinkedNode<E> node) {
         node.setNext(this.head);
-        node.setPrevious(null);
         this.head = node;
         this.length++;
     }
@@ -93,15 +95,12 @@ public class DoublyLinkedList<E> {
      * @param node - node to added
      * Adds node to the end of the list
      */
-    public void addBack (DoublyLinkedNode<E> node) {
+    public void addBack (SinglyLinkedNode<E> node) throws UnisolatedNodeException{
+        if(node.getNext() != null)
+            throw new UnisolatedNodeException("Given node is in another list. Cannot insert.");
         this.tail.setNext(node);
         this.tail = node;
         this.length++;
-        //preserving the rep invariant in the case where node is a part of a separate list
-        while (this.tail.getNext() != null) {
-            this.tail = this.tail.getNext();
-            this.length++;
-        }
     }
 
     /**
@@ -120,10 +119,10 @@ public class DoublyLinkedList<E> {
      * If node is not present in the list, the list is unchanged
      */
     public void remove(SinglyLinkedNode<E> node) {
-        SinglyLinkedNode<E> current = this.head;
-        if (current == node) {
+        if (this.head == node) {
             removeFront();
         }
+        SinglyLinkedNode<E> current = this.head;
         SinglyLinkedNode<E> next = current.getNext();
         while (next != null) {
             if (next == node) {
@@ -185,9 +184,7 @@ public class DoublyLinkedList<E> {
     public void clear() {
         SinglyLinkedNode<E> temp = this.head;
         while (this.head != null) {
-            this.head = this.head.getNext();
-            temp.setNext(null);
-            this.length--;
+            removeFront();
         }
         this.tail.setNext(null);
     }
@@ -200,7 +197,11 @@ public class DoublyLinkedList<E> {
         SinglyLinkedNode<E> temp = this.head;
         SinglyLinkedList<E> returnList = new SinglyLinkedList<E>();
         while (temp != null) {
-            returnList.addBack(temp);
+            try {
+                returnList.addBack(temp);
+            } catch (UnisolatedNodeException error) {
+                System.out.println("Could not add the following SinglyLinkedNode to the copy: " + temp.toString());
+            }
             temp = temp.getNext();
         }
         return returnList;
