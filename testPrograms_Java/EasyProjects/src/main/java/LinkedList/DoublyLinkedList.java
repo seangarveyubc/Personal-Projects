@@ -1,12 +1,10 @@
-package List;
+package LinkedList;
 
 import Node.DoublyLinkedNode;
-import Exceptions.UnisolatedNodeException;
 
 /**
  * Implementation of a Doubly Linked List that contains both head and tail references
- * @param <E>
- *     Generic to handle different types of linked lists
+ * @param <E> - Generic to handle different types of linked lists
  */
 
 /**
@@ -119,20 +117,26 @@ public class DoublyLinkedList<E> {
      * Removes the first occurrence of the GenericNode<E> node
      * If node is not present in the list, the list is unchanged
      */
-    public void remove(SinglyLinkedNode<E> node) {
-        SinglyLinkedNode<E> current = this.head;
+    public void remove(DoublyLinkedNode<E> node) {
+        DoublyLinkedNode<E> current = this.head;
         if (current == node) {
             removeFront();
         }
-        SinglyLinkedNode<E> next = current.getNext();
-        while (next != null) {
-            if (next == node) {
-                current.setNext(next.getNext());
-                next.setNext(null);
+        while (current.getNext() != null) {
+            if (current == node) {
+                DoublyLinkedNode<E> prev = current.getPrevious();
+                DoublyLinkedNode<E> next = current.getNext();
+                prev.setNext(next);
+                next.setPrevious(prev);
+                current.setNext(null);
+                current.setPrevious(null);
                 this.length--;
-                break;
+                return;
             }
+            current = current.getNext();
         }
+        if (current == node)
+            removeBack();
     }
 
     /**
@@ -141,18 +145,19 @@ public class DoublyLinkedList<E> {
      * If the list is empty, then no change occurs
      */
     public void removeFront () {
-        if (this.isEmpty()){}
+        if (this.isEmpty())
+            return;
         else if (this.length == 1) {
             this.head = null;
             this.tail = null;
-            this.length--;
         }
         else {
-            SinglyLinkedNode<E> temp = this.head;
+            DoublyLinkedNode<E> temp = this.head;
             this.head = this.head.getNext();
+            this.head.setPrevious(null);
             temp.setNext(null);
-            this.length--;
         }
+        this.length--;
     }
 
     /**
@@ -161,44 +166,37 @@ public class DoublyLinkedList<E> {
      * If the list has one node, the list is made empty
      */
     public void removeBack () {
-        if (this.isEmpty()) {}
+        if (this.isEmpty())
+            return;
         else if (this.length == 1) {
             this.head = null;
             this.tail = null;
-            this.length--;
         }
         else {
-            SinglyLinkedNode<E> current = this.head;
-            while (current.getNext() != this.tail) {
-                current = current.getNext();
-            }
-            current.setNext(null);
-            this.tail = current;
-            this.length--;
+            DoublyLinkedNode<E> temp = this.tail;
+            this.tail = this.tail.getPrevious();
+            this.tail.setNext(null);
+            temp.setPrevious(null);
         }
+        this.length--;
     }
 
     /**
      * clear
-     * Removes all SinglyLinkedNodes from the SinglyLinkedList object
+     * Removes all DoublyLinkedNode from the DoublyLinkedList object
      */
     public void clear() {
-        SinglyLinkedNode<E> temp = this.head;
-        while (this.head != null) {
-            this.head = this.head.getNext();
-            temp.setNext(null);
-            this.length--;
-        }
-        this.tail.setNext(null);
+        while (this.head != null)
+            removeFront();
     }
 
     /**
      * cloneShallow
      * @return a shallow copy of the SinglyLinkedList
      */
-    public SinglyLinkedList<E> cloneShallow() {
-        SinglyLinkedNode<E> temp = this.head;
-        SinglyLinkedList<E> returnList = new SinglyLinkedList<E>();
+    public DoublyLinkedList<E> cloneShallow() {
+        DoublyLinkedNode<E> temp = this.head;
+        DoublyLinkedList<E> returnList = new DoublyLinkedList<E>();
         while (temp != null) {
             returnList.addBack(temp);
             temp = temp.getNext();
@@ -211,8 +209,8 @@ public class DoublyLinkedList<E> {
      * @param node - node to be checked
      * @return true if node is found in this SinglyLinkedList
      */
-    public boolean contains(SinglyLinkedNode<E> node) {
-        SinglyLinkedNode<E> temp = this.head;
+    public boolean contains(DoublyLinkedNode<E> node) {
+        DoublyLinkedNode<E> temp = this.head;
         while (temp != null){
             if (temp == node)
                 return true;
@@ -226,11 +224,11 @@ public class DoublyLinkedList<E> {
      * @return true if this and list contain the same elements
      * Compares reference equality for each node
      */
-    public boolean isSame(SinglyLinkedList<E> list) {
+    public boolean isSame(DoublyLinkedList<E> list) {
         if (list.length() != this.length)
             return false;
-        SinglyLinkedNode<E> currentThis = this.head;
-        SinglyLinkedNode<E> currentThat = list.head;
+        DoublyLinkedNode<E> currentThis = this.head;
+        DoublyLinkedNode<E> currentThat = list.head;
         while (currentThis != null) {
             if (currentThis != currentThat)
                 return false;

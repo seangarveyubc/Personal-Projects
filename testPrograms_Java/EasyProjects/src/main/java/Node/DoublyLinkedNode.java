@@ -46,8 +46,4 @@ public class DoublyLinkedNode<E> {
                 ", data=" + this.data +
                 '}';
     }
-
-    public boolean equals(DoublyLinkedNode<E> node) {
-        return (this.toString() == node.toString());
-    }
 }

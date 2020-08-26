@@ -1,7 +1,6 @@
-package NodeTest;
+package Node;
 
 
-import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class DoublyLinkedNodeTest {

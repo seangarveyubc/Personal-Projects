@@ -1,5 +1,4 @@
-package ListTest;
-import static org.junit.Assert.*;
+package LinkedList;
 import org.junit.Test;
 
 public class SinglyLinkedListTest {

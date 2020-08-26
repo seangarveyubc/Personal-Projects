@@ -1,4 +1,4 @@
-package List;
+package LinkedList;
 
 import Node.SinglyLinkedNode;
 import Exceptions.UnisolatedNodeException;
