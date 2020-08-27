@@ -72,11 +72,7 @@ public class SinglyLinkedList<E> {
      * Adds node to the front of the list
      */
     public void add (SinglyLinkedNode<E> node) {
-        try {
-            addBack(node);
-        } catch (UnisolatedNodeException error) {
-            System.out.println("Could not add the following SinglyLinkedNode: " + node.toString());
-        }
+        addFront(node);
     }
 
     /**
@@ -85,6 +81,8 @@ public class SinglyLinkedList<E> {
      * Adds node to the front of the list
      */
     public void addFront (SinglyLinkedNode<E> node) {
+        if (this.length == 0)
+            this.tail = node;
         node.setNext(this.head);
         this.head = node;
         this.length++;
@@ -228,7 +226,7 @@ public class SinglyLinkedList<E> {
      * Compares reference equality for each node
      */
     public boolean isSame(SinglyLinkedList<E> list) {
-        if (list.length() != this.length)
+        if (list.getLength() != this.length)
             return false;
         SinglyLinkedNode<E> currentThis = this.head;
         SinglyLinkedNode<E> currentThat = list.head;
@@ -250,10 +248,26 @@ public class SinglyLinkedList<E> {
     }
 
     /**
+     * getHead
+     * @return the head SinglyLinkedNode
+     */
+    public SinglyLinkedNode<E> getHead() {
+        return this.head;
+    }
+
+    /**
+     * getTail
+     * @return the tail SinglyLinkedNode
+     */
+    public SinglyLinkedNode<E> getTail() {
+        return this.tail;
+    }
+
+    /**
      * getLength
      * @return the number of nodes in the SinglyLinkedList object
      */
-    public int length() {
+    public int getLength() {
         return this.length;
     }
 
@@ -268,5 +282,19 @@ public class SinglyLinkedList<E> {
                 ", tail=" + tail +
                 ", length=" + length +
                 '}';
+    }
+
+    /**
+     * print
+     * Prints the contents of the list
+     */
+    public void print() {
+        System.out.print("[ ");
+        SinglyLinkedNode<E> current = this.head;
+        while (current != null) {
+            System.out.print(current.getData().toString() + " ");
+            current = current.getNext();
+        }
+        System.out.println("]");
     }
 }

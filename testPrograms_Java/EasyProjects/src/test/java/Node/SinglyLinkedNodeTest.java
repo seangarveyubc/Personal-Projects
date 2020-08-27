@@ -1,16 +1,30 @@
 package Node;
 
 
-import LinkedList.SinglyLinkedList;
 import org.junit.Test;
-import static org.junit.Assert.*;
+
+import java.util.Date;
+
+import static org.junit.Assert.assertEquals;
 
 
 public class SinglyLinkedNodeTest {
 
     @Test
-    public void ConstructorTest1() {
-        assertEquals(new Integer(1), new SinglyLinkedNode<Integer>(1).getData());
+    public void ConstructorIntTest() {
+        String testString = "SinglyLinkedNode{" +
+                            "next=null" +
+                            ", data=1" +
+                            "}";
+        String resultString = new SinglyLinkedNode<Integer>(1).toString();
+        assertEquals(testString, resultString);
+    }
+
+    @Test
+    public void ConstructorObjectTest() {
+        Date testDate = new Date();
+        Date resultDate = (Date) testDate.clone();
+        assertEquals(testDate.toString(), resultDate.toString());
     }
 
     @Test

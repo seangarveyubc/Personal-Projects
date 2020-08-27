@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e9854ea1-649f-497b-983d-cf2abd2317cf" name="Default Changelist" comment="Third commit - Binary Tree Node">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Node/BinaryTreeNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/Node/BinaryTreeNodeTest.java" afterDir="false" />
+    <list default="true" id="e9854ea1-649f-497b-983d-cf2abd2317cf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Tree/BinaryTree.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/Tree/BinaryTreeTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EasyProjects.iml" beforeDir="false" afterPath="$PROJECT_DIR$/EasyProjects.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/List/DoublyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinkedList/DoublyLinkedList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/List/SinglyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinkedList/SinglyLinkedList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Node/DoublyLinkedNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Node/DoublyLinkedNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ListTest/DoublyLinkedListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LinkedList/DoublyLinkedListTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ListTest/SinglyLinkedListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LinkedList/SinglyLinkedListTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/NodeTest/DoublyLinkedNodeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Node/DoublyLinkedNodeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/NodeTest/SinglyLinkedNodeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Node/SinglyLinkedNodeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LinkedList/SinglyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinkedList/SinglyLinkedList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/LinkedList/SinglyLinkedListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LinkedList/SinglyLinkedListTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Node/BinaryTreeNodeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Node/BinaryTreeNodeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Node/DoublyLinkedNodeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Node/DoublyLinkedNodeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Node/SinglyLinkedNodeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Node/SinglyLinkedNodeTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,50 +61,81 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SinglyLinkedNodeTest.test3">
-    <configuration name="SinglyLinkedNodeTest.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.SinglyLinkedListTest.removeTest2">
+    <configuration name="SinglyLinkedListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="test" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Node.*" />
+          <option name="PATTERN" value="LinkedList.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="Node" />
-      <option name="MAIN_CLASS_NAME" value="Node.SinglyLinkedNodeTest" />
-      <option name="METHOD_NAME" value="test1" />
+      <option name="PACKAGE_NAME" value="LinkedList" />
+      <option name="MAIN_CLASS_NAME" value="LinkedList.SinglyLinkedListTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SinglyLinkedListTest.ConstructorTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="LinkedList.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="LinkedList" />
+      <option name="MAIN_CLASS_NAME" value="LinkedList.SinglyLinkedListTest" />
+      <option name="METHOD_NAME" value="ConstructorTest2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SinglyLinkedNodeTest.test2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SinglyLinkedListTest.addTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="test" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Node.*" />
+          <option name="PATTERN" value="LinkedList.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="Node" />
-      <option name="MAIN_CLASS_NAME" value="Node.SinglyLinkedNodeTest" />
-      <option name="METHOD_NAME" value="test2" />
+      <option name="PACKAGE_NAME" value="LinkedList" />
+      <option name="MAIN_CLASS_NAME" value="LinkedList.SinglyLinkedListTest" />
+      <option name="METHOD_NAME" value="addTest2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SinglyLinkedNodeTest.test3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SinglyLinkedListTest.removeTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="test" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Node.*" />
+          <option name="PATTERN" value="LinkedList.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="Node" />
-      <option name="MAIN_CLASS_NAME" value="Node.SinglyLinkedNodeTest" />
-      <option name="METHOD_NAME" value="test3" />
+      <option name="PACKAGE_NAME" value="LinkedList" />
+      <option name="MAIN_CLASS_NAME" value="LinkedList.SinglyLinkedListTest" />
+      <option name="METHOD_NAME" value="removeTest1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SinglyLinkedListTest.removeTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="LinkedList.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="LinkedList" />
+      <option name="MAIN_CLASS_NAME" value="LinkedList.SinglyLinkedListTest" />
+      <option name="METHOD_NAME" value="removeTest2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -116,9 +143,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.SinglyLinkedNodeTest.test3" />
-        <item itemvalue="JUnit.SinglyLinkedNodeTest.test2" />
-        <item itemvalue="JUnit.SinglyLinkedNodeTest.test1" />
+        <item itemvalue="JUnit.SinglyLinkedListTest.removeTest2" />
+        <item itemvalue="JUnit.SinglyLinkedListTest.removeTest1" />
+        <item itemvalue="JUnit.SinglyLinkedListTest" />
+        <item itemvalue="JUnit.SinglyLinkedListTest.ConstructorTest2" />
+        <item itemvalue="JUnit.SinglyLinkedListTest.addTest2" />
       </list>
     </recent_temporary>
   </component>
@@ -140,7 +169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598408357805</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Third commit - Binary Tree Node">
+      <created>1598421277367</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1598421277367</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
