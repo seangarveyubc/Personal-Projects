@@ -10,13 +10,8 @@ public class SinglyLinkedNode<E> {
         this.data = data;
     }
 
-    public SinglyLinkedNode(SinglyLinkedNode<E> next, E data) {
-        this.next = next;
-        this.data = data;
-    }
-
     public SinglyLinkedNode<E> getNext() {
-        return next;
+        return this.next;
     }
 
     public void setNext(SinglyLinkedNode<E> next) {
@@ -24,7 +19,7 @@ public class SinglyLinkedNode<E> {
     }
 
     public E getData() {
-        return data;
+        return this.data;
     }
 
     @Override

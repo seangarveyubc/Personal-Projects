@@ -12,12 +12,6 @@ public class DoublyLinkedNode<E> {
         this.data = data;
     }
 
-    public DoublyLinkedNode(E data, DoublyLinkedNode<E> next, DoublyLinkedNode<E> previous) {
-        this.next = next;
-        this.previous = previous;
-        this.data = data;
-    }
-
     public DoublyLinkedNode<E> getNext() {
         return this.next;
     }

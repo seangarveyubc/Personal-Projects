@@ -1,5 +1,7 @@
 package LinkedList;
 
+import Exceptions.EmptyListException;
+import Exceptions.NodeNotFoundException;
 import Node.SinglyLinkedNode;
 import Exceptions.UnisolatedNodeException;
 
@@ -12,14 +14,12 @@ import Exceptions.UnisolatedNodeException;
 /**
  * Functions contained in this file
  *      Constructor ()
- *      Constructor (SinglyLinkedNode<E> node)
- *      add (SinglyLinkedNode<E> node)
  *      addFront (SinglyLinkedNode<E> node)
  *      addBack (SinglyLinkedNode<E> node)
- *      remove ()
  *      remove(SinglyLinkedNode<E> node)
  *      removeFront ()
  *      removeBack ()
+ *      get(SinglyLinkedNode node)
  *      clear()
  *      cloneShallow()
  *      contains(SinglyLinkedNode<E> node)
@@ -56,26 +56,6 @@ public class SinglyLinkedList<E> {
     }
 
     /**
-     * Constructor
-     * @param node
-     * Initializes a SinglyLinkedList object with a starting node
-     */
-    public SinglyLinkedList (SinglyLinkedNode<E> node) {
-        this.head = node;
-        this.tail = node;
-        this.length = 1;
-    }
-
-    /**
-     * add
-     * @param node - node to be added
-     * Adds node to the front of the list
-     */
-    public void add (SinglyLinkedNode<E> node) {
-        addFront(node);
-    }
-
-    /**
      * addFront
      * @param node - node to be added
      * Adds node to the front of the list
@@ -103,22 +83,18 @@ public class SinglyLinkedList<E> {
 
     /**
      * remove
-     * Removes the first node in the list
-     * If the list is empty, then no change occurs
-     */
-    public void remove () {
-        removeFront();
-    }
-
-    /**
-     * remove
      * @param node - node to be removed
      * Removes the first occurrence of the GenericNode<E> node
      * If node is not present in the list, the list is unchanged
      */
-    public void remove(SinglyLinkedNode<E> node) {
+    public SinglyLinkedNode<E> remove(SinglyLinkedNode<E> node) throws NodeNotFoundException{
         if (this.head == node) {
-            removeFront();
+            try {
+                return removeFront();
+            } catch (EmptyListException error) {
+                System.out.println("Removal attempted. List is empty.");
+            }
+
         }
         SinglyLinkedNode<E> current = this.head;
         SinglyLinkedNode<E> next = current.getNext();
@@ -127,28 +103,63 @@ public class SinglyLinkedList<E> {
                 current.setNext(next.getNext());
                 next.setNext(null);
                 this.length--;
-                break;
+                return next;
             }
         }
+        throw new NodeNotFoundException("Node not found in SinglyLinkedList.");
+    }
+
+    /**
+     * removeData
+     * @param node - node to be removed
+     * Removes the first occurrence of the GenericNode<E> node
+     * If node is not present in the list, the list is unchanged
+     */
+    public SinglyLinkedNode<E> remove(E data) throws NodeNotFoundException{
+        if (this.head.getData() == data) {
+            try {
+                return removeFront();
+            } catch (EmptyListException error) {
+                System.out.println("Removal attempted. List is empty.");
+            }
+
+        }
+        SinglyLinkedNode<E> current = this.head;
+        SinglyLinkedNode<E> next = current.getNext();
+        while (next != null) {
+            if (next.getData() == data) {
+                current.setNext(next.getNext());
+                next.setNext(null);
+                this.length--;
+                return next;
+            }
+        }
+        throw new NodeNotFoundException("Node not found in SinglyLinkedList.");
     }
 
     /**
      * removeFront
      * Removes the first node in the list
-     * If the list is empty, then no change occurs
+     * If the list is empty, then no change occurs, null is returned
+     * @return the
      */
-    public void removeFront () {
-        if (this.isEmpty()){}
+    public SinglyLinkedNode<E> removeFront () throws EmptyListException {
+        if (this.isEmpty()){
+            return null;
+        }
         else if (this.length == 1) {
+            SinglyLinkedNode<E> temp = this.head;
             this.head = null;
             this.tail = null;
             this.length--;
+            return temp;
         }
         else {
             SinglyLinkedNode<E> temp = this.head;
             this.head = this.head.getNext();
             temp.setNext(null);
             this.length--;
+            return temp;
         }
     }
 
@@ -157,21 +168,36 @@ public class SinglyLinkedList<E> {
      * Removes the last node in the list
      * If the list has one node, the list is made empty
      */
-    public void removeBack () {
+    public SinglyLinkedNode<E> removeBack () {
         if (this.isEmpty()) {}
         else if (this.length == 1) {
+            SinglyLinkedNode<E> temp = this.head;
             this.head = null;
             this.tail = null;
             this.length--;
+            return temp;
         }
         else {
             SinglyLinkedNode<E> current = this.head;
             while (current.getNext() != this.tail) {
                 current = current.getNext();
             }
+            SinglyLinkedNode<E> temp = this.tail;
             current.setNext(null);
             this.tail = current;
             this.length--;
+            return temp;
+        }
+    }
+
+    /**
+     * get
+     * Returns the singly linked
+     */
+    public void clear() {
+        SinglyLinkedNode<E> temp = this.head;
+        while (this.head != null) {
+            removeFront();
         }
     }
 
@@ -184,7 +210,6 @@ public class SinglyLinkedList<E> {
         while (this.head != null) {
             removeFront();
         }
-        this.tail.setNext(null);
     }
 
     /**

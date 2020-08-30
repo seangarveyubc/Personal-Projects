@@ -225,7 +225,7 @@ public class DoublyLinkedList<E> {
      * Compares reference equality for each node
      */
     public boolean isSame(DoublyLinkedList<E> list) {
-        if (list.length() != this.length)
+        if (list.getLength() != this.length)
             return false;
         DoublyLinkedNode<E> currentThis = this.head;
         DoublyLinkedNode<E> currentThat = list.head;
@@ -250,7 +250,7 @@ public class DoublyLinkedList<E> {
      * getLength
      * @return the number of nodes in the SinglyLinkedList object
      */
-    public int length() {
+    public int getLength() {
         return this.length;
     }
 
@@ -260,7 +260,7 @@ public class DoublyLinkedList<E> {
      */
     @Override
     public String toString() {
-        return "SinglyLinkedList{" +
+        return "DoublyLinkedList{" +
                 "head=" + head +
                 ", tail=" + tail +
                 ", length=" + length +

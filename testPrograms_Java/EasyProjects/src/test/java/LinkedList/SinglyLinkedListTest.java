@@ -101,6 +101,8 @@ public class SinglyLinkedListTest {
         assertEquals(node3, list.getHead());
         assertEquals(node2, list.getTail());
         assertEquals(2, list.getLength());
+        list.clear();
+        list.print();
     }
 
 }
