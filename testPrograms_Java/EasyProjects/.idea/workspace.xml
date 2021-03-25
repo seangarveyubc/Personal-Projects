@@ -2,18 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9854ea1-649f-497b-983d-cf2abd2317cf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Exceptions/EmptyListException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Exceptions/NodeNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Node/GraphNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Stack/DoublyStack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Stack/SinglyStack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Utility/Pair.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Exceptions/UnisolatedNodeException.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/LinkedList/DoublyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinkedList/DoublyLinkedList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/LinkedList/SinglyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LinkedList/SinglyLinkedList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Node/BinaryTreeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Node/BinaryTreeNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Node/DoublyLinkedNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Node/DoublyLinkedNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Node/SinglyLinkedNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Node/SinglyLinkedNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Node/GraphNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Node/GraphNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/LinkedList/SinglyLinkedListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LinkedList/SinglyLinkedListTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,7 +33,7 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test" />
+    <property name="last_opened_file_path" value="D:/CPEN3/ELEC221" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -188,7 +181,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598510043053</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fifth commit - multiple additions">
+      <created>1598803770535</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1598803770535</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -208,6 +208,7 @@
     <MESSAGE value="Second commit - junit updates" />
     <MESSAGE value="Third commit - Binary Tree Node" />
     <MESSAGE value="Fourth commit - Binary Tree, new tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fourth commit - Binary Tree, new tests" />
+    <MESSAGE value="Fifth commit - multiple additions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fifth commit - multiple additions" />
   </component>
 </project>

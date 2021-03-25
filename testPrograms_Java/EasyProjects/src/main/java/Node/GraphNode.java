@@ -14,7 +14,7 @@ public class GraphNode<E> {
     }
 
     public E getData() {
-        return this.data;
+        return data;
     }
 
     public void setData(E data) {
@@ -25,8 +25,8 @@ public class GraphNode<E> {
         return this.neighbours;
     }
 
-    public SinglyLinkedList<Pair<GraphNode, Integer>> getPair() {
-        return this.neighbours;
+    public Pair<GraphNode, Integer> getPair(Pair<GraphNode, Integer> pair) {
+        return neighbours.
     }
 
     public void addNeighbour(GraphNode node, int cost) {

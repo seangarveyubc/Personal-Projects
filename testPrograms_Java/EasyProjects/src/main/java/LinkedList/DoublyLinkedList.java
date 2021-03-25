@@ -1,6 +1,9 @@
 package LinkedList;
 
+import Exceptions.EmptyListException;
+import Exceptions.NodeNotFoundException;
 import Node.DoublyLinkedNode;
+import org.w3c.dom.Node;
 
 /**
  * Implementation of a Doubly Linked List that contains both head and tail references
@@ -10,11 +13,8 @@ import Node.DoublyLinkedNode;
 /**
  * Functions contained in this file
  *      Constructor ()
- *      Constructor (DoublyLinkedNode<E> node)
- *      add (DoublyLinkedNode<E> node)
  *      addFront (DoublyLinkedNode<E> node)
  *      addBack (DoublyLinkedNode<E> node)
- *      remove ()
  *      remove(DoublyLinkedNode<E> node)
  *      removeFront ()
  *      removeBack ()
@@ -54,26 +54,6 @@ public class DoublyLinkedList<E> {
     }
 
     /**
-     * Constructor
-     * @param node
-     * Initializes a SinglyLinkedList object with a starting node
-     */
-    public DoublyLinkedList (DoublyLinkedNode<E> node) {
-        this.head = node;
-        this.tail = node;
-        this.length = 1;
-    }
-
-    /**
-     * add
-     * @param node - node to be added
-     * Adds node to the front of the list
-     */
-    public void add (DoublyLinkedNode<E> node) {
-        addBack(node);
-    }
-
-    /**
      * addFront
      * @param node - node to be added
      * Adds node to the front of the list
@@ -93,22 +73,10 @@ public class DoublyLinkedList<E> {
      */
     public void addBack (DoublyLinkedNode<E> node) {
         this.tail.setNext(node);
+        node.setPrevious(this.tail);
+        node.setNext(null);
         this.tail = node;
         this.length++;
-        //preserving the rep invariant in the case where node is a part of a separate list
-        while (this.tail.getNext() != null) {
-            this.tail = this.tail.getNext();
-            this.length++;
-        }
-    }
-
-    /**
-     * remove
-     * Removes the first node in the list
-     * If the list is empty, then no change occurs
-     */
-    public void remove () {
-        removeFront();
     }
 
     /**
@@ -117,26 +85,32 @@ public class DoublyLinkedList<E> {
      * Removes the first occurrence of the GenericNode<E> node
      * If node is not present in the list, the list is unchanged
      */
-    public void remove(DoublyLinkedNode<E> node) {
-        DoublyLinkedNode<E> current = this.head;
-        if (current == node) {
-            removeFront();
-        }
-        while (current.getNext() != null) {
-            if (current == node) {
-                DoublyLinkedNode<E> prev = current.getPrevious();
-                DoublyLinkedNode<E> next = current.getNext();
-                prev.setNext(next);
-                next.setPrevious(prev);
-                current.setNext(null);
-                current.setPrevious(null);
-                this.length--;
-                return;
+    public DoublyLinkedNode<E> remove(DoublyLinkedNode<E> node) throws EmptyListException {
+        if (this.isEmpty()) {
+            throw new EmptyListException("Doubly Linked List is empty");
+        } else {
+            if (this.head == node) {
+
+                return removeFront();
             }
-            current = current.getNext();
+            DoublyLinkedNode<E> current = this.head;
+            while (current.getNext() != null) {
+                if (current == node) {
+                    DoublyLinkedNode<E> prev = current.getPrevious();
+                    DoublyLinkedNode<E> next = current.getNext();
+                    prev.setNext(next);
+                    next.setPrevious(prev);
+                    current.setNext(null);
+                    current.setPrevious(null);
+                    this.length--;
+                    return current;
+                }
+                current = current.getNext();
+            }
+            if (current == node)
+                return removeBack();
+            throw new NodeNotFoundException("Node not found in the DoublyLinkedList.");
         }
-        if (current == node)
-            removeBack();
     }
 
     /**
@@ -144,20 +118,21 @@ public class DoublyLinkedList<E> {
      * Removes the first node in the list
      * If the list is empty, then no change occurs
      */
-    public void removeFront () {
+    public DoublyLinkedNode<E> removeFront () throws EmptyListException {
         if (this.isEmpty())
-            return;
-        else if (this.length == 1) {
+            throw new EmptyListException("DoublyLinkedList is empty.");
+        DoublyLinkedNode<E> temp = this.head;
+        if (this.length == 1) {
             this.head = null;
             this.tail = null;
         }
         else {
-            DoublyLinkedNode<E> temp = this.head;
             this.head = this.head.getNext();
             this.head.setPrevious(null);
             temp.setNext(null);
         }
         this.length--;
+        return temp;
     }
 
     /**
@@ -165,20 +140,21 @@ public class DoublyLinkedList<E> {
      * Removes the last node in the list
      * If the list has one node, the list is made empty
      */
-    public void removeBack () {
+    public DoublyLinkedNode<E> removeBack () throws EmptyListException {
         if (this.isEmpty())
-            return;
-        else if (this.length == 1) {
+            throw new EmptyListException("DoublyLinkedList is empty.");
+        DoublyLinkedNode<E> temp = this.tail;
+        if (this.length == 1) {
             this.head = null;
             this.tail = null;
         }
         else {
-            DoublyLinkedNode<E> temp = this.tail;
             this.tail = this.tail.getPrevious();
             this.tail.setNext(null);
             temp.setPrevious(null);
         }
         this.length--;
+        return temp;
     }
 
     /**
@@ -186,8 +162,12 @@ public class DoublyLinkedList<E> {
      * Removes all DoublyLinkedNode from the DoublyLinkedList object
      */
     public void clear() {
-        while (this.head != null)
-            removeFront();
+        while (this.head != null) {
+            try {
+                removeFront();
+            } catch (EmptyListException ignored) {
+            }
+        }
     }
 
     /**
@@ -214,6 +194,7 @@ public class DoublyLinkedList<E> {
         while (temp != null){
             if (temp == node)
                 return true;
+            temp = temp.getNext();
         }
         return false;
     }
@@ -236,6 +217,22 @@ public class DoublyLinkedList<E> {
             currentThat = currentThat.getNext();
         }
         return true;
+    }
+
+    /**
+     * getHead
+     * @return the head of DoublyLinkedList
+     */
+    public DoublyLinkedNode<E> getHead() {
+        return this.head;
+    }
+
+    /**
+     * getTail
+     * @return the tail of DoublyLinkedList
+     */
+    public DoublyLinkedNode<E> getTail() {
+        return this.tail;
     }
 
     /**

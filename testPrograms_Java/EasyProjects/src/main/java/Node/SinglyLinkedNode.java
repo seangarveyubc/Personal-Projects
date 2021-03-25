@@ -10,16 +10,20 @@ public class SinglyLinkedNode<E> {
         this.data = data;
     }
 
-    public SinglyLinkedNode<E> getNext() {
-        return this.next;
+    public Node.SinglyLinkedNode<E> getNext() {
+        return next;
     }
 
-    public void setNext(SinglyLinkedNode<E> next) {
+    public void setNext(Node.SinglyLinkedNode<E> next) {
         this.next = next;
     }
 
     public E getData() {
-        return this.data;
+        return data;
+    }
+
+    public void setData(E data) {
+        this.data = data;
     }
 
     @Override

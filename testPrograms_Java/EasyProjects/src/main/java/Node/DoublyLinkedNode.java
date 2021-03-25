@@ -12,24 +12,28 @@ public class DoublyLinkedNode<E> {
         this.data = data;
     }
 
-    public DoublyLinkedNode<E> getNext() {
-        return this.next;
+    public Node.DoublyLinkedNode<E> getNext() {
+        return next;
     }
 
-    public void setNext(DoublyLinkedNode<E> next) {
+    public void setNext(Node.DoublyLinkedNode<E> next) {
         this.next = next;
     }
 
-    public DoublyLinkedNode<E> getPrevious() {
-        return this.previous;
+    public Node.DoublyLinkedNode<E> getPrevious() {
+        return previous;
     }
 
-    public void setPrevious(DoublyLinkedNode<E> previous) {
+    public void setPrevious(Node.DoublyLinkedNode<E> previous) {
         this.previous = previous;
     }
 
     public E getData() {
-        return this.data;
+        return data;
+    }
+
+    public void setData(E data) {
+        this.data = data;
     }
 
     @Override
